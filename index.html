@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bases Loaded EV Strategy Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1 data-key="headerTitle">Bases Loaded: EV Strategy Dashboard</h1>
+        <div class="status-bar">
+            <span id="data-update-status">Data Last Updated: Never</span>
+            <span id="budget-status">API Budget: 0/500 Used</span>
+            <span class="unit-guide" data-key="unitDefinition">
+                 1 U = 1% of Bankroll (e.g., ₱50 if Bankroll is ₱5,000)
+            </span>
+        </div>
+    </header>
+
+    <main>
+        
+        <section class="top-row-controls">
+            
+            <div class="control-group">
+                <label data-key="langSelectLabel" for="language-select">Language:</label>
+                <select id="language-select">
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                </select>
+            </div>
+            
+            <div id="best-play-card" class="best-bet-panel">
+                <p data-key="noBestPlay">Analyzing for best play...</p>
+            </div>
+
+            <div class="control-group">
+                <label data-key="adminCodeLabel" for="admin-code-input">Admin Code for API Fetch:</label>
+                <input type="password" id="admin-code-input" placeholder="Enter code">
+                <button id="fetch-data-btn" class="disabled" disabled data-key="fetchDataBtn">Fetch New Data</button>
+            </div>
+            
+        </section>
+        
+        <hr>
+
+        <section id="games-section">
+            <h2 data-key="gamesHeader">Today's EV Games</h2>
+            <div id="games-container" class="games-grid">
+                <p data-key="loadingMessage">Loading EV data...</p>
+            </div>
+        </section>
+
+        <hr>
+
+        <section id="manual-calculator" class="calculator-panel">
+            <h2 data-key="manualCalcHeader">Manual EV/Prop Calculator (0 API Cost)</h2>
+            <p data-key="manualCalcInstructions">Use for Player Props or Alt Lines: Input Book Odds and Your Projected Probability.</p>
+            
+            <div class="calculator-inputs">
+                <div class="input-group">
+                    <label for="odds-input" data-key="oddsInputLabel">Book Odds (Decimal, e.g., 2.10)</label>
+                    <input type="number" id="odds-input" min="1.01" step="0.01" placeholder="2.00">
+                </div>
+                <div class="input-group">
+                    <label for="prob-input" data-key="probInputLabel">Your Probability (%)</label>
+                    <input type="number" id="prob-input" min="0" max="100" step="0.1" placeholder="55.0">
+                </div>
+                <button id="calculate-ev-btn" data-key="calculateBtn">Calculate EV</button>
+            </div>
+
+            <div class="calculator-results">
+                <span data-key="evResultLabel">EV:</span> <strong id="manual-ev-result">0.00%</strong>
+                <span data-key="actionVerdictLabel">Action:</span> <strong id="manual-action-verdict" class="verdict-neutral" data-key="verdictInput">Enter Values</strong>
+            </div>
+        </section>
+
+        <footer>
+            <p>Metrics: <span id="unique-visitors-count">0</span> Unique Visitors | <span id="total-views-count">0</span> Total Views</p>
+        </footer>
+
+    </main>
+
+    <script src="mock_data.js"></script>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
